@@ -48,9 +48,6 @@ namespace DB_UnitTestingConsole
             }
 
             Console.ReadKey();
-
-
-
         }
     }
 }
