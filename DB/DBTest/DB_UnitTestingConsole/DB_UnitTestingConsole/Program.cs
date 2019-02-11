@@ -1,4 +1,6 @@
-﻿using System;
+﻿/** Under App.config, change DESKTOP-WHATEVER to your SQL Server's is.*/
+using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,13 +43,14 @@ namespace DB_UnitTestingConsole
                     foreach (Encounter encounter in questionQuery)
                         Console.WriteLine(encounter.EncounterID + "\t" + encounter.EncounterTypeID);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
-                }   
+                }
             }
 
             Console.ReadKey();
+
         }
     }
 }
