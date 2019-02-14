@@ -119,7 +119,7 @@ namespace DB_UnitTestingConsole
                 {
                     foreach (DataColumn column in dt.Columns)
                     {
-                        Console.Write("{0, -9}", row[column]);
+                        Console.Write("{0, -15}", row[column]);
                         colNum++;
 
                         if (colNum == dt.Columns.Count)
