@@ -18,6 +18,8 @@ namespace DB_UnitTestingConsole
             SqlDataAdapter da;
             DataTable dt;
 
+            int colNum = 0;
+
             // Open the db
             connectMe.Open();
 
@@ -37,6 +39,22 @@ namespace DB_UnitTestingConsole
                 dt = new DataTable();
                 da.Fill(dt);
 
+                Console.WriteLine("\nEncounter\n----------");
+                foreach (DataRow row in dt.Rows)
+                {
+                    foreach (DataColumn column in dt.Columns)
+                    {
+                        Console.Write("{0, -9}", row[column]);
+                        colNum++;
+
+                        if (colNum == dt.Columns.Count)
+                        {
+                            Console.WriteLine();
+                            colNum = 0;
+                        }
+                    }
+                }
+
                 Console.WriteLine("\nEncounter contains " + dt.Rows.Count + " rows and " + dt.Columns.Count + " columns.");
 
                 // EncounterType Table
@@ -45,6 +63,22 @@ namespace DB_UnitTestingConsole
                 da = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 da.Fill(dt);
+
+                Console.WriteLine("\n\nEncounterType\n--------------");
+                foreach (DataRow row in dt.Rows)
+                {
+                    foreach (DataColumn column in dt.Columns)
+                    {
+                        Console.Write("{0, -9}", row[column]);
+                        colNum++;
+
+                        if (colNum == dt.Columns.Count)
+                        {
+                            Console.WriteLine();
+                            colNum = 0;
+                        }
+                    }
+                }
 
                 Console.WriteLine("\nEncounter Type contains " + dt.Rows.Count + " rows and " + dt.Columns.Count + " columns.");
 
@@ -55,6 +89,22 @@ namespace DB_UnitTestingConsole
                 dt = new DataTable();
                 da.Fill(dt);
 
+                Console.WriteLine("\n\nQuestions\n----------");
+                foreach (DataRow row in dt.Rows)
+                {
+                    foreach (DataColumn column in dt.Columns)
+                    {
+                        Console.Write("{0, -9}", row[column]);
+                        colNum++;
+
+                        if (colNum == dt.Columns.Count)
+                        {
+                            Console.WriteLine();
+                            colNum = 0;
+                        }
+                    }
+                }
+
                 Console.WriteLine("\nQuestions contains " + dt.Rows.Count + " rows and " + dt.Columns.Count + " columns.");
 
                 // Choices Table
@@ -63,6 +113,22 @@ namespace DB_UnitTestingConsole
                 da = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 da.Fill(dt);
+
+                Console.WriteLine("\n\nChoices\n--------");
+                foreach (DataRow row in dt.Rows)
+                {
+                    foreach (DataColumn column in dt.Columns)
+                    {
+                        Console.Write("{0, -9}", row[column]);
+                        colNum++;
+
+                        if (colNum == dt.Columns.Count)
+                        {
+                            Console.WriteLine();
+                            colNum = 0;
+                        }
+                    }
+                }
 
                 Console.WriteLine("\nChoices contains " + dt.Rows.Count + " rows and " + dt.Columns.Count + " columns.");
             }
