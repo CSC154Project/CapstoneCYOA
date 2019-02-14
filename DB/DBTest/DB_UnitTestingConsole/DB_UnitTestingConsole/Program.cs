@@ -36,12 +36,12 @@ namespace DB_UnitTestingConsole
                 {
                     // Run the query and store the results in the questionQuery variable.
                     // There is an issue with querying the "Question" table it will throw an exception
-                    var questionQuery = CapstoneDB.ExecuteQuery<Encounter>(@"SELECT * FROM Encounter");
+                    var questionQuery = CapstoneDB.ExecuteQuery<Question>(@"SELECT * FROM Question");
 
                     // Loop through the questionQuery list and print every single item
-                    Console.WriteLine("EncID \t" + "EncTypeID");
-                    foreach (Encounter encounter in questionQuery)
-                        Console.WriteLine(encounter.EncounterID + "\t" + encounter.EncounterTypeID);
+                    Console.WriteLine("ID \t" + "Text");
+                    foreach (Question question in questionQuery)
+                        Console.WriteLine(question.ID + "\t" + question.Text);
                 }
                 catch (Exception ex)
                 {
@@ -50,7 +50,6 @@ namespace DB_UnitTestingConsole
             }
 
             Console.ReadKey();
-
         }
     }
 }
