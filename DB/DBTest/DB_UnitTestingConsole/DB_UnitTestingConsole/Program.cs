@@ -1,10 +1,7 @@
-﻿/** Under App.config, change DESKTOP-WHATEVER to your SQL Server's is.*/
-using System;
-using System.Configuration;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace DB_UnitTestingConsole
 {
@@ -12,45 +9,68 @@ namespace DB_UnitTestingConsole
     {
         static void Main(string[] args)
         {
-            // Create a connection to the database
-            CapstoneDBDataContext CapstoneDB = new CapstoneDBDataContext(Properties.Settings.Default.capstoneConnectionString);
-            int flag = 0;
+            // Connect to the db
+            string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=capstone;Integrated Security=True";
+            SqlConnection connectMe = new SqlConnection(connectionString);
 
-            // Check to make sure the database exists, 
-            // If it does exist. Set flag to 1,
-            // if it is still 0 the queries won't run
-            if (CapstoneDB.DatabaseExists())
+            List<string> result = new List<string>();
+            string query;
+            SqlDataAdapter da;
+            DataTable dt;
+
+            // Open the db
+            connectMe.Open();
+
+            if (connectMe.State != ConnectionState.Open)
             {
-                Console.WriteLine("The DB Exsists");
-                flag = 1;
+                Console.WriteLine("Unable to open the database.");
             }
             else
             {
-                Console.WriteLine("The DB Does not Exsist");
-                flag = 0;
+                Console.WriteLine("Successfully opened the database...\nNow checking tables...");
+
+                // Check contents of each table in db
+                // Encounter Table
+                query = "SELECT * FROM ENCOUNTER";
+                SqlCommand cmd = new SqlCommand(query, connectMe);
+                da = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                da.Fill(dt);
+
+                Console.WriteLine("\nEncounter contains " + dt.Rows.Count + " rows and " + dt.Columns.Count + " columns.");
+
+                // EncounterType Table
+                query = "SELECT * FROM ENCOUNTERTYPE";
+                cmd = new SqlCommand(query, connectMe);
+                da = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                da.Fill(dt);
+
+                Console.WriteLine("\nEncounter Type contains " + dt.Rows.Count + " rows and " + dt.Columns.Count + " columns.");
+
+                // Questions Table
+                query = "SELECT * FROM QUESTIONS";
+                cmd = new SqlCommand(query, connectMe);
+                da = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                da.Fill(dt);
+
+                Console.WriteLine("\nQuestions contains " + dt.Rows.Count + " rows and " + dt.Columns.Count + " columns.");
+
+                // Choices Table
+                query = "SELECT * FROM CHOICES";
+                cmd = new SqlCommand(query, connectMe);
+                da = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                da.Fill(dt);
+
+                Console.WriteLine("\nChoices contains " + dt.Rows.Count + " rows and " + dt.Columns.Count + " columns.");
             }
 
-            if (flag == 1)
-            {
-                try
-                {
-                    // Run the query and store the results in the questionQuery variable.
-                    // There is an issue with querying the "Question" table it will throw an exception
-                    var questionQuery = CapstoneDB.ExecuteQuery<Encounter>(@"SELECT * FROM Encounter");
+            connectMe.Close();
 
-                    // Loop through the questionQuery list and print every single item
-                    Console.WriteLine("EncID \t" + "EncTypeID");
-                    foreach (Encounter encounter in questionQuery)
-                        Console.WriteLine(encounter.EncounterID + "\t" + encounter.EncounterTypeID);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
-            }
-
+            Console.WriteLine("\nPress any key to exit.");
             Console.ReadKey();
-
         }
     }
 }
