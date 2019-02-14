@@ -1,7 +1,0 @@
-C:\Users\DougF\Desktop\DB_UnitTestingConsole\DB_UnitTestingConsole\bin\Debug\DB_UnitTestingConsole.exe.config
-C:\Users\DougF\Desktop\DB_UnitTestingConsole\DB_UnitTestingConsole\bin\Debug\DB_UnitTestingConsole.exe
-C:\Users\DougF\Desktop\DB_UnitTestingConsole\DB_UnitTestingConsole\bin\Debug\DB_UnitTestingConsole.pdb
-C:\Users\DougF\Desktop\DB_UnitTestingConsole\DB_UnitTestingConsole\obj\Debug\DB_UnitTestingConsole.csprojAssemblyReference.cache
-C:\Users\DougF\Desktop\DB_UnitTestingConsole\DB_UnitTestingConsole\obj\Debug\DB_UnitTestingConsole.csproj.CoreCompileInputs.cache
-C:\Users\DougF\Desktop\DB_UnitTestingConsole\DB_UnitTestingConsole\obj\Debug\DB_UnitTestingConsole.exe
-C:\Users\DougF\Desktop\DB_UnitTestingConsole\DB_UnitTestingConsole\obj\Debug\DB_UnitTestingConsole.pdb
