@@ -42,15 +42,6 @@ namespace DB_UnitTestingConsole
                 Console.WriteLine("\nEncounter\n----------");
                 foreach (DataRow row in dt.Rows)
                 {
-                    // Run the query and store the results in the questionQuery variable.
-                    // There is an issue with querying the "Question" table it will throw an exception
-                    var questionQuery = CapstoneDB.ExecuteQuery<Question>(@"SELECT * FROM Question");
-
-                    // Loop through the questionQuery list and print every single item
-                    Console.WriteLine("ID \t" + "Text");
-                    foreach (Question question in questionQuery)
-                        Console.WriteLine(question.ID + "\t" + question.Text);
-
                     foreach (DataColumn column in dt.Columns)
                     {
                         Console.Write("{0, -9}", row[column]);
@@ -143,6 +134,7 @@ namespace DB_UnitTestingConsole
             }
 
             connectMe.Close();
+
             Console.WriteLine("\nPress any key to exit.");
             Console.ReadKey();
         }
