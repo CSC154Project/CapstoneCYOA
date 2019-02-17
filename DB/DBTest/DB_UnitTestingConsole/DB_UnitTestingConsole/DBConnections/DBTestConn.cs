@@ -42,20 +42,50 @@ namespace DB_UnitTestingConsole.DBConnections
             catch (SqlException ex)
             {
                 throw new DBConnException("Unable to connect to Database.", ex);
-            }  
+            }
         }
 
-        public void RunQuery(string query)
+        /*
+            Function Name: RunQuery
+            Description:
+                Run a Sql Server Query with the connection information set in
+                this classes Constructor. Return a SqlDataReader object after 
+                the query is run.
+
+            Params: query -> string
+            Returns returnedReader -> SqlDataReader
+        */
+        public SqlDataReader RunQuery(string query)
         {
+            SqlDataReader returnedReader;
 
             using (conn)
             {
                 SqlCommand queryCommand = new SqlCommand(query, conn);
                 using (SqlDataReader reader = queryCommand.ExecuteReader())
                 {
-                    
+                    returnedReader = reader;
                 }
             }
+
+            return returnedReader;
         }
+
+        /*
+
+        */
+        public List<List<string>> ResultsToList(SqlDataReader results)
+        {
+            return new List<List<string>>();
+        }
+
+        #region Overriden Built-In Method ToString()
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+
+        #endregion
     }
 }
