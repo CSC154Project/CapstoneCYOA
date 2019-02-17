@@ -42,8 +42,20 @@ namespace DB_UnitTestingConsole.DBConnections
             catch (SqlException ex)
             {
                 throw new DBConnException("Unable to connect to Database.", ex);
+            }  
+        }
+
+        public void RunQuery(string query)
+        {
+
+            using (conn)
+            {
+                SqlCommand queryCommand = new SqlCommand(query, conn);
+                using (SqlDataReader reader = queryCommand.ExecuteReader())
+                {
+                    
+                }
             }
-                
         }
     }
 }
