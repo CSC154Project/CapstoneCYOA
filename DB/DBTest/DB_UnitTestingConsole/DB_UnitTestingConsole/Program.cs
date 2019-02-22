@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using DB_UnitTestingConsole.DBConnections;
 
 namespace DB_UnitTestingConsole
 {
@@ -9,6 +10,7 @@ namespace DB_UnitTestingConsole
     {
         static void Main(string[] args)
         {
+            /*
             // Connect to the db
             string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=capstone;Integrated Security=True";
             SqlConnection connectMe = new SqlConnection(connectionString);
@@ -135,7 +137,13 @@ namespace DB_UnitTestingConsole
 
             connectMe.Close();
 
-            Console.WriteLine("\nPress any key to exit.");
+            */
+            DBTestConn conn = new DBTestConn();
+            DataTable reader = conn.RunQuery(@"SELECT * FROM Question");
+            
+            
+
+            Console.WriteLine(reader.ToString() + "\n\n\n\nPress any key to exit.");
             Console.ReadKey();
         }
     }
