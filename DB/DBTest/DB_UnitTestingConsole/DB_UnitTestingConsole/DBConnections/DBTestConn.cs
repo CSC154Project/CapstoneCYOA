@@ -10,6 +10,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -27,9 +28,7 @@ namespace DB_UnitTestingConsole.DBConnections
         /*
             Constructor Name: DBTestConn
             Description:
-                Create a connection to the database and open the connection, 
-                if it can't be open throw a DBConnException
-
+                Empty Constructor
             Params: None
         */
         public DBTestConn()
@@ -55,24 +54,20 @@ namespace DB_UnitTestingConsole.DBConnections
             Params: query -> string
             Returns returnedReader -> SqlDataReader
         */
-        public SqlDataReader RunQuery(string query)
+        public DataTable RunQuery(string query)
         {
-            SqlDataReader returnedReader;
+            SqlCommand cmd = new SqlCommand(query, conn);
+            DataTable resultTable = new DataTable();
+            var adapter = new SqlDataAdapter(cmd).Fill(resultTable);
 
-            using (conn)
-            {
-                SqlCommand queryCommand = new SqlCommand(query, conn);
-                using (SqlDataReader reader = queryCommand.ExecuteReader())
-                {
-                    returnedReader = reader;
-                }
-            }
+            if (conn.State == ConnectionState.Open)
+                conn.Close();
 
-            return returnedReader;
+            return resultTable;
         }
 
         /*
-
+            
         */
         public List<List<string>> ResultsToList(SqlDataReader results)
         {
