@@ -136,14 +136,14 @@ namespace DB_UnitTestingConsole
             }
 
             connectMe.Close();
-
             */
-            DBTestConn conn = new DBTestConn();
-            DataTable reader = conn.RunQuery(@"SELECT * FROM Question");
-            
-            
 
-            Console.WriteLine(reader.ToString() + "\n\n\n\nPress any key to exit.");
+            DBTestConn conn = new DBTestConn();
+            conn.RunQuery(@"SELECT * FROM Encounter");
+            
+         
+
+            Console.WriteLine("\n\n\n\nPress any key to exit.");
             Console.ReadKey();
         }
     }
