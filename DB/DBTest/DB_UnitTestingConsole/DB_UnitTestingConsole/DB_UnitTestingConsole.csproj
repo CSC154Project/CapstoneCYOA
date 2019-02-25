@@ -50,8 +50,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CapstoneDB.dbml</DependentUpon>
     </Compile>
-    <Compile Include="DBConnections\DBConnException.cs" />
-    <Compile Include="DBConnections\DBTestConn.cs" />
+    <Compile Include="DBConn\DBConn.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
