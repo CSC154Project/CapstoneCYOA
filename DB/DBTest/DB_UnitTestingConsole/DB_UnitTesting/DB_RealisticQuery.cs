@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace DB_UnitTesting
 {
     [TestClass]
-    public class UnitTest1
+    public class DB_RealisticQuery
     {
         [TestMethod]
         public void TestMethod1()
