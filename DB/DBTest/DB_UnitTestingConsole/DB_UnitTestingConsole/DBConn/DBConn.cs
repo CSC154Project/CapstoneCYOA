@@ -125,6 +125,16 @@ namespace DB_UnitTestingConsole.DBConn
         public string Text { get; set; }
         public int NextEID { get; set; }
 
+        public Choices() { }
+        public Choices(int EncID, int ID, int QuestionID, string Text, int NextEID)
+        {
+            this.EncID = EncID;
+            this.ID = ID;
+            this.QuestionID = QuestionID;
+            this.Text = Text;
+            this.NextEID = NextEID;
+        }
+
         /*
             Function Name: ToString()
             Description:

@@ -22,7 +22,11 @@ namespace DB_UnitTestingConsole.TestDataExpected
 
         public ActualDBValues()
         {
+            // Example for Encounter Table
+            encounter.Add(new DBConn.Encounter(1, 3));
 
+            // Example for Choices Table
+            choices.Add(new DBConn.Choices(1, 1, 1, "Continue", 2));
         }
     }
 }
