@@ -59,6 +59,12 @@
     <Compile Include="DB_AdvancedQuery.cs" />
     <Compile Include="DB_RealisticQuery.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DB_UnitTestingConsole\DB_UnitTestingConsole.csproj">
+      <Project>{650e1555-264a-4480-8f90-a18db0022d98}</Project>
+      <Name>DB_UnitTestingConsole</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

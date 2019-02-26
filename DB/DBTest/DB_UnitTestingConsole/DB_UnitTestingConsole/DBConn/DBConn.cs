@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,13 @@ namespace DB_UnitTestingConsole.DBConn
     {
         public int EncounterID { get; set; }
         public int EncounterTypeID { get; set; }
+
+        public Encounter() { }
+        public Encounter(int EncounterID, int EncounterTypeID)
+        {
+            this.EncounterID = EncounterID;
+            this.EncounterTypeID = EncounterTypeID;
+        }
 
         /*
             Function Name: ToString()
@@ -46,6 +54,13 @@ namespace DB_UnitTestingConsole.DBConn
         public int ID { get; set; }
         public string Description { get; set; }
 
+        public EncounterType() { }
+        public EncounterType(int ID, string Description)
+        {
+            this.ID = ID;
+            this.Description = Description;
+        }
+
         /*
             Function Name: ToString()
             Description:
@@ -72,6 +87,14 @@ namespace DB_UnitTestingConsole.DBConn
         public int EncID { get; set; }
         public int ID { get; set; }
         public string Text { get; set; }
+
+        public Questions() { }
+        public Questions(int EncID, int ID, string Text)
+        {
+            this.EncID = EncID;
+            this.ID = ID;
+            this.Text = Text;
+        }
 
         /*
             Function Name: ToString()
@@ -131,6 +154,10 @@ namespace DB_UnitTestingConsole.DBConn
     {
         // Connection Instance var
         private SqlConnection conn;
+        public bool isConnected
+        {
+            get;
+        }
 
         /*
             Constructor: DBConn
@@ -146,6 +173,11 @@ namespace DB_UnitTestingConsole.DBConn
             {
                 conn = new SqlConnection(connectionString);
                 conn.Open();
+
+                if (conn.State != ConnectionState.Open)
+                    isConnected = false;
+                else
+                    isConnected = true;
             }
             catch (Exception Ex)
             {
