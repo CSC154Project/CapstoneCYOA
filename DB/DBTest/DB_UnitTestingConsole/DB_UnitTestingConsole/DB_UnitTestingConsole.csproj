@@ -51,6 +51,7 @@
       <DependentUpon>CapstoneDB.dbml</DependentUpon>
     </Compile>
     <Compile Include="DBConn\DBConn.cs" />
+    <Compile Include="DBConn\DBConnException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

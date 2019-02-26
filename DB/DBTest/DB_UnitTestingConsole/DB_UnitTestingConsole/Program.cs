@@ -140,7 +140,7 @@ namespace DB_UnitTestingConsole
 
 
             DBConn.DBConn conn = new DBConn.DBConn();
-            List<object> lstResult = conn.RunQuery("SELECT * FROM Choices", new DBConn.Choices());
+            List<object> lstResult = conn.RunQuery("SELECT * FROM EncounterType", new DBConn.EncounterType());
 
             for (int i = 0; i < lstResult.Count; i++)
                 Console.WriteLine(lstResult[i].ToString());
